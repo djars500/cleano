@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- JavaScript Bundle with Popper -->
+
+  <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+   
+</head>
+
+
+{% comment %}  {% endcomment %}
+<body class="text-center">
+
+
+    
+<main class="form-signin">
+
+  <form method="POST" >
+{% csrf_token %}  
+  <a class="text-decoration-none" href="/">
+    <img class="mb-4 " style="margin: 0 auto; display:block;" src="{% static 'img/logo.png' %}" width="120" height="" />
+  </a>
+    
+    
+    <h1 class="h3 mb-3 fw-normal">Регистрация</h1>
+
+{% for message in messages %}
+<div class="container-fluid p-0">
+  <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+    
+    {{ message }}
+  </div>
+</div>
+{% endfor%}
+    <div class="form-floating">
+      <input type="text" name="last_name" class="form-control" placeholder="Фамилия" required="" id="id_last_name">
+      <label for="floatingInput">{{user_form.last_name.label}}</label>
+    </div>
+    <div class="form-floating">
+      <input type="text" name="first_name" class="form-control" placeholder="Имя" required="" id="id_first_name">
+      <label for="floatingPassword">{{user_form.first_name.label}}</label>
+    </div>
+    <div class="form-floating">
+      <input type="text" name="username" class="form-control" placeholder="Логин" maxlength="150" required="" id="id_username">
+      <label for="floatingPassword">{{user_form.username.label}}</label>
+    </div>
+    <div class="form-floating">
+     <input type="password" name="password" class="form-control" placeholder="********" required="" id="id_password">
+      <label for="floatingPassword">{{user_form.password.label}}</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" name="password2" class="form-control" placeholder="********" required="" id="id_password2">
+      <label for="floatingPassword">{{user_form.password2.label}}</label>
+    </div>
+    
+    
+
+   
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Зарегестироваться</button>
+    <p class="mt-5 mb-3 text-muted">© 2017–2021</p>
+  </form>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    
+
+</body>
+
+</html>

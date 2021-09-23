@@ -1,0 +1,223 @@
+{% extends "base.html" %} {% load static %} {% block title %}
+<title>Document</title>
+
+<!-- CSS only -->
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+  crossorigin="anonymous"
+/>
+{% endblock %} {% block content %} {% if request.user.is_staff %}
+<div class="container py-3" style="width: 960px">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Номер телефона</th>
+        <th>Статус заявки</th>
+        <th>Адрес дома</th>
+        <th>Площадь дома</th>
+        <th>Услуга</th>
+        <th>Сумма</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for req in requests %}
+      
+      <tr>
+        <td>{{req.phone}}</td>
+        <td>
+          <form method="POST" action="{% url 'request_status_update' req.id %}">
+          {% csrf_token %}
+          <select
+            onChange={this.form.submit()}
+            class="form-select"
+            style="width: auto"
+            name="statuc"
+            aria-label="Default select example"
+          >
+        
+            <option value="В ожидании"  {% if req.statuc == 'В ожидании' %} selected {% endif %}>В ожидании</option>
+            <option value="На отработке" {% if req.statuc == 'На отработке' %} selected {% endif %}>На отработке</option>
+            <option value="Заказ выполнен" {% if req.statuc == 'Заказ выполнен' %} selected {% endif %}>Заказ выполнен</option>
+          </select>
+          </form>
+        </td>
+        <td>{{req.user.first_name}}</td>
+        <td>{{req.house}}</td>
+        <td>{{req.usluga}}</td>
+        <td>{{req.total}}</td>
+      </tr>
+      {% endfor %}
+      
+    </tbody>
+  </table>
+  <!-- Кнопка-триггер модального окна -->
+
+  <!-- Модальное окно -->
+
+  <form class="" method="POST">
+    {% csrf_token %}
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Sign up for free</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Закрыть"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-floating mb-3">
+              {{form.phone}}
+              <label for="floatingInput">{{form.phone.label}}</label>
+            </div>
+            <div class="form-floating mb-3">
+              {{form.address}}
+              <label for="floatingAdress">{{form.address.label}}</label>
+            </div>
+            <div class="form-floating mb-3">
+              {{form.metr}}
+              <label for="floatingMetr">{{form.metr.label}}</label>
+            </div>
+            <div class="mb-3">{{form.house}}</div>
+            <div class="mb-3">{{form.usluga}}</div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Закрыть
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+              >
+                Отправить
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="modal-content rounded-5 shadow">
+    {% comment %} {% endcomment %}
+  </div>
+  
+</div>
+        {% else %}
+
+<form class="" method="POST">
+    {% csrf_token %}
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Sign up for free</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Закрыть"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-floating mb-3">
+              {{form.phone}}
+              <label for="floatingInput">{{form.phone.label}}</label>
+            </div>
+            <div class="form-floating mb-3">
+              {{form.address}}
+              <label for="floatingAdress">{{form.address.label}}</label>
+            </div>
+            <div class="form-floating mb-3">
+              {{form.metr}}
+              <label for="floatingMetr">{{form.metr.label}}</label>
+            </div>
+            <div class="mb-3">{{form.house}}</div>
+            <div class="mb-3">{{form.usluga}}</div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Закрыть
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+              >
+                Отправить
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Номер телефона</th>
+        <th>Статус заявки</th>
+        <th>Адрес дома</th>
+        <th>Площадь дома</th>
+        <th>Помещение</th>
+        <th>Сумма</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    {% for client in clients %}
+      <tr>
+        <td>{{client.phone}}</td>
+        <td>{{client.statuc}}
+        </td>
+        <td>{{client.usluga}}</td>
+        <td>{{client.metr}}</td>
+        <td>{{client.house}}</td>
+      </tr>
+    {% endfor %}  
+     
+    </tbody>
+  </table>
+  <div class="container d-flex justify-content-end">
+    <button
+      class="btn btn-primary d-flex justify-content-end"
+      type="button"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+      style="margin-right: 10px;"
+    >
+      Добавить заявку
+    </button>
+    
+    
+  </div>
+</div>
+
+{% endif %}
+ {% endblock %}

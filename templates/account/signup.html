@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}">
+</head>
+
+	<body class="text-center">
+    
+		<main class="form-signin">
+		  <form method="post">
+		  {% csrf_token %}
+		  <a class="text-decoration-none" href="/">
+                 <img class="mb-4" src="{% static 'img/logo.png' %}" alt="" width="120" height="">   
+          </a>
+			
+			<h1 class="h3 mb-3 fw-normal"></h1>
+			{% for message in messages %}
+<div class="container-fluid p-0">
+  <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+    
+    {{ message }}
+  </div>
+</div>
+{% endfor%}
+			<div class="form-floating">
+			  {{form.username}}
+			  <label for="floatingInput">{{form.username.label}}</label>
+			</div>
+			<div class="form-floating">
+			  {{form.password}}
+			  <label for="floatingPassword">{{form.password.label}}</label>
+			</div>
+		
+			
+			<button class="w-100 btn btn-lg btn-primary" type="submit">Войти</button>
+			<p class="mt-5 mb-3 text-muted">© 2017–2021</p>
+		  </form>
+		</main>
+		
+		
+			
+		  
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+		</body>
+
+</html>
