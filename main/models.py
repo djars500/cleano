@@ -66,6 +66,10 @@ class Zayavka(models.Model):
         verbose_name = 'Заявку'
         verbose_name_plural = 'Заявки'
 
+    def save(self, *args, **kwargs):
+        self.total = self.metr * int(self.usluga.price)
+        super().save(*args, **kwargs)
+
     
 
 class Contact(models.Model):

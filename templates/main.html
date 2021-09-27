@@ -21,7 +21,7 @@
               <h4 class="my-0 fw-normal">Генеральная уборка</h4>
             </div>
             <div class="card-body">
-              <h1 class="card-title pricing-card-title">6500<small class="text-muted fw-light">тг</small></h1>
+              <h1 class="card-title pricing-card-title">300<small class="text-muted fw-light">тг</small></h1>
               <ul class="list-unstyled mt-3 mb-4">
                 <li>Бөлмелердегі терезенің екі жақ бетін жуу</li>
                 <li>Қабырғаларды, төбелерді, есіктерді, барлық жабдықтар мен жиһазды шаңнан тазарту</li>
@@ -41,7 +41,7 @@
               <h4 class="my-0 fw-normal">Влажная уборка</h4>
             </div>
             <div class="card-body">
-              <h1 class="card-title pricing-card-title">7000<small class="text-muted fw-light">тг</small></h1>
+              <h1 class="card-title pricing-card-title">250<small class="text-muted fw-light">тг</small></h1>
               <ul class="list-unstyled mt-3 mb-4">
                 <li>Кілемдер құрғақ тазалау</li>
                 <li>Барлық сыртқы беттер мен жабдықтардың шаңын кетіру</li>
@@ -49,9 +49,7 @@
                 <li>Еден жуу</li>
                 <li>Ванна бөлмесін жуу</li>
                 <li>Ыдыс жуу және қоқыс жинау</li>
-                <li>Ыдыс жуу және қоқыс жинау</li>
-                <li>Ыдыс жуу және қоқыс жинау</li>
-                <li>Ыдыс жуу және қоқыс жинау</li>
+                
               </ul>
               <a class="text-decoration-none" href="#modal">
               <button type="button" class="w-100 btn btn-lg btn-outline-primary">Заказ беру</button>
@@ -65,7 +63,7 @@
               <h4 class="my-0 fw-normal">Уборка после ремонта</h4>
             </div>
             <div class="card-body">
-              <h1 class="card-title pricing-card-title">10000<small class="text-muted fw-light">тг</small></h1>
+              <h1 class="card-title pricing-card-title">400<small class="text-muted fw-light">тг</small></h1>
               <ul class="list-unstyled mt-3 mb-4">
                 <li>Терезелердің екі жағын тазалап жуу</li>
                 <li>Қабырға мен потолокты шаңнан тазарту</li>
@@ -96,28 +94,15 @@
             </tr>
           </thead>
           <tbody>
+            {% for usluga in uslugi %}
             <tr>
-              <th scope="row" class="text-start">Уборка после ремонта</th>
-              <td>4500</td>
-              <td>2000</td>
-              <td>1000</td>
+              <th scope="row" class="text-start">{{usluga.name}}</th>
+              <td>{{usluga.price}}</td>
+              <td>{{usluga.price}}</td>
+              <td>{{usluga.price}}</td>
             </tr>
-            <tr>
-              <th scope="row" class="text-start">Генеральная уборка</th>
-              <td>1000</td>
-              <td>4000</td>
-              <td>2000</td>
-          </tr>
-          </tbody>
-  
-          <tbody>
-            <tr>
-              <th scope="row" class="text-start">Эко уборка</th>
-              <td>3500</td>
-              <td>1500</td>
-              <td>2500</td>
-            </tr>
-            
+            {% endfor %}
+           
             
           </tbody>
         </table>

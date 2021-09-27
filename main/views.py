@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from .forms import ContactForm, ZayavkaForm
 from django.contrib.auth.decorators import login_required
-from .models import Zayavka, Courier, Result
+from .models import Zayavka, Courier, Result, Usluga
 
 def main(request):
     if request.method == 'POST':
@@ -13,8 +13,9 @@ def main(request):
         form = ContactForm()  
 
     results = Result.objects.all()
+    uslugi = Usluga.objects.all()
         
-    return render(request, 'main.html', {'form': form, 'results': results})
+    return render(request, 'main.html', {'form': form, 'results': results, 'uslugi': uslugi})
 
 
 @login_required(login_url="signup")
