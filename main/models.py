@@ -56,7 +56,7 @@ class Zayavka(models.Model):
     statuc = models.CharField('Статус заявки', max_length=255 , choices=status, blank=True, null=True, default='В ожидании')
     house = models.ForeignKey(Place, on_delete=models.CASCADE,verbose_name="Выберите помещение" ,null=True, blank=True)
     usluga = models.ForeignKey(Usluga, on_delete=models.CASCADE, verbose_name='Услуга', null=True, blank=True)
-    total = models.CharField('Сумма', max_length=99999999, blank=True, null=True)
+    total = models.CharField('Сумма', max_length=255, blank=True, null=True)
     created_at = models.DateField(auto_now_add=True, null=True, blank=True)
 
     def __str__(self):
