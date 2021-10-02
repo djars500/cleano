@@ -93,7 +93,7 @@ else:
    DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dbforproject',
+        'NAME': 'cleano_data',
         'USER': 'projectdbuser',
         'PASSWORD': 'password',
         'HOST': 'localhost',
