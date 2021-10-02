@@ -19,7 +19,7 @@ class Courier(models.Model):
 
 class Usluga(models.Model):
     name = models.CharField('Наименование услуги',max_length=255)
-    price = models.CharField('Цена', max_length=999999)
+    price = models.CharField('Цена', max_length=255)
    
 
     def __str__(self):
@@ -74,7 +74,7 @@ class Zayavka(models.Model):
 
 class Contact(models.Model):
     phone = models.CharField('Номер телефона' ,max_length=12)
-    name = models.CharField('Имя', max_length=255)\
+    name = models.CharField('Имя', max_length=255)
 
 
     def __str__(self):
