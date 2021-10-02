@@ -25,7 +25,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-^xhfoe$=$^-k98%77efvqi!)rohjmy=%rx*6)%l4bo(^!b5w6v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+try:
+    from .local import *
+    DEBUG = True
+except ImportError:
+    DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -77,11 +81,25 @@ WSGI_APPLICATION = 'cleano.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
+
+if DEBUG:
+    DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+    }
+else:
+    DATABASES = {
+'default': {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'cleano',
+    'USER': 'djars',
+    'PASSWORD': '123',
+    'HOST': 'localhost',
+    'PORT': '',
+}
+
 }
 
 
