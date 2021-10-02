@@ -90,16 +90,15 @@ if DEBUG:
     }
     }
 else:
-    DATABASES = {
-'default': {
-    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'cleano',
-    'USER': 'djars',
-    'PASSWORD': '123',
-    'HOST': 'localhost',
-    'PORT': '',
-}
-
+   DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dbforproject',
+        'USER': 'projectdbuser',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
 }
 
 
